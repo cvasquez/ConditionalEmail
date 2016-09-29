@@ -8,13 +8,13 @@ var snippet,
     eq_val = $('.condition_value input');
 
 // Show input when custom field is selected
-$('.variable').on('change', function(){
-  if($(this).val() == 'custom') {
-    $('.custom_field').css('display', 'inline-block');
-  } else {
-    $('.custom_field').css('display', 'none');
-  }
-});
+  $('.variable').on('change', function(){
+    if($(this).val() == 'custom') {
+      $('.custom_field').css('display', 'inline-block');
+    } else {
+      $('.custom_field').css('display', 'none');
+    }
+  });
 
 // Show input when equals string or equals number is selected
 $('.condition').on('change', function(){
@@ -29,7 +29,7 @@ $('.condition').on('change', function(){
 function newStatement() {
   var element = $('div[class^="block"]:last'),
       element_count = $('div[class^="block"]').length;
-  element.clone().attr('class', 'block'+ (element_count+1)).appendTo('.statementStream');
+  element.clone(true).attr('class', 'block'+ (element_count+1)).appendTo('.statementStream');
 }
 
 // Build Snippet Code
