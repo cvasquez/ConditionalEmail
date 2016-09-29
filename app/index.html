@@ -33,44 +33,52 @@
 
     <div class="container">
 
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="statement" id="statement01">
-            <form class="form-inline">
-              if
-              <select class="form-control variable">
-                <option disabled selected value>select personalization</option>
-                <option value="firstname">First Name</option>
-                <option value="lastname">Last Name</option>
-                <option value="geog_country">Country</option>
-                <option value="geog_region">Region (state in the USA)</option>
-                <option value="geog_city">City</option>
-                <option value="custom">Custom Field</option>
-              </select>
+      <div class="statementStream">
+        <div class="block1">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="statement">
+                <form class="form-inline">
+                  if
+                  <select class="form-control variable">
+                    <option disabled selected value>select personalization</option>
+                    <option value="firstname">First Name</option>
+                    <option value="lastname">Last Name</option>
+                    <option value="geog_country">Country</option>
+                    <option value="geog_region">Region (state in the USA)</option>
+                    <option value="geog_city">City</option>
+                    <option value="custom">Custom Field</option>
+                  </select>
 
-              <div class="form-group custom_field">
-                <input type="text" class="form-control" placeholder="Custom Field" />
+                  <div class="form-group custom_field">
+                    <input type="text" class="form-control" placeholder="Custom Field" />
+                  </div>
+
+                  <select class="form-control condition">
+                    <option disabled selected value>select a condition</option>
+                    <option value="eq_string">Equals (string)</option>
+                    <option value="eq_num">Equals (number)</option>
+                    <option value="not_empty">Is not empty</option>
+                  </select>
+
+                  <div class="form-group condition_value">
+                    <input type="text" class="form-control" placeholder="Value" />
+                  </div>
+                </form>
               </div>
+            </div>
+          </div>
 
-              <select class="form-control condition">
-                <option disabled selected value>select a condition</option>
-                <option value="eq_string">Equals (string)</option>
-                <option value="eq_num">Equals (number)</option>
-                <option value="not_empty">Is not empty</option>
-              </select>
-
-              <div class="form-group condition_value">
-                <input type="text" class="form-control" placeholder="Value" />
-              </div>
-            </form>
+          <div class="row">
+            <div class="col-sm-12">
+              <textarea class="htmlContent"></textarea>
+            </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-12" id="content01">
-          <textarea class="htmlContent"></textarea>
-        </div>
-      </div>
+
+      <button class="btn btn-secondary" onClick="newStatement();">Add Statement</button>
+
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

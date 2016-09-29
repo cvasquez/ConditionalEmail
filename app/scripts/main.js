@@ -25,6 +25,13 @@ $('.condition').on('change', function(){
   }
 });
 
+// Add new conditional statement
+function newStatement() {
+  var element = $('div[class^="block"]:last'),
+      element_count = $('div[class^="block"]').length;
+  element.clone().attr('class', 'block'+ (element_count+1)).appendTo('.statementStream');
+}
+
 // Build Snippet Code
 function buildSnippet(){
 
