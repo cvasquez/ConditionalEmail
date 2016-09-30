@@ -4,23 +4,43 @@ $icon-font-path: '../fonts/';
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+// Colors
+$lightGray:       #EAEAEA;
+$teal:            #4BB7A5;
+
 body {
   padding-bottom: 80px;
+  background: #FAFAFA;
+}
+
+.statementStream {
+  border: 1px solid #CCCCCC;
+  border-top: 0;
+  border-bottom: 0;
 }
 
 // Query bar
 .statement {
-  background: lightgray;
+  background: $lightGray;
+  border-bottom: 1px solid #CCCCCC;
   padding: 5px 10px;
 }
 
 // Content textarea
 .htmlContent {
   width: 100%;
-  height:200px;
+  height:120px;
   padding: 10px;
-  border: 1px solid lightgray;
+  border: 0px solid #CCCCCC;
+  border-top: none;
+  border-bottom-width: 1px;
   display: block;
+  transition-duration: .1s;
+
+  &:focus {
+    outline: none;
+    border-left-width: 2px;
+  }
 }
 
 // Hide text inputs until selects are set
@@ -39,7 +59,7 @@ body {
   width: 100%;
   text-align: right;
   padding: 10px;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid $lightGray;
   background: rgba(255,255,255,.8);
 }
 
@@ -69,7 +89,33 @@ body {
   }
 }
 
-.btn-bottom {
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
+// Bottom buttons
+.btn-container {
+  overflow: auto;
+  box-shadow: rgba(0,0,0,.2) 0px 7px 4px -4px;
+
+  .btn-half {
+    // display: inline-block;
+    // width: 50%;
+    display: block;
+    width: 100%;
+    float: left;
+    border-top: 0;
+    border-radius: 0;
+  }
+
+  .btn-success {
+    background: $teal;
+    border: 0;
+    transition-duration: .2s;
+    border-bottom: 1px solid darken($teal, 5%);
+
+    &:hover {
+      background: darken($teal, 2%);
+    }
+  }
+}
+
+.delete-block {
+  display: none;
 }

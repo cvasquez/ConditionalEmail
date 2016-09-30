@@ -30,10 +30,22 @@ $('.condition').on('change', function(){
 
 
 // Add new conditional statement
-function newStatement() {
-  var element = $('div[class^="block"]:last'),
+function newStatement(type) {
+  var element = $('div[class^="block"]:first'),
       element_count = $('div[class^="block"]').length;
-  element.clone(true).attr('class', 'block'+ (element_count+1)).appendTo('.statementStream');
+  if(type==0){
+    element.clone(true).attr('class', 'block'+ (element_count+1)).appendTo('.statementStream');
+    $('.block' + (element_count+1)).find('.statement').html('else');
+  } else if(type==1) {
+    element.clone(true).attr('class', 'block'+ (element_count+1)).appendTo('.statementStream');
+    $('.block' + (element_count+1)).find('.statement .delete-block').css('display', 'block');
+  }
+}
+
+
+// Delete block
+function removeBlock(elem){
+  $(elem).parents('div[class^="block"]').remove();
 }
 
 
@@ -67,12 +79,11 @@ function buildSnippet(){
       condition = '';
     }
 
-
     // Build snippet
     snippet = '{% if globals().get(\'' + variable + '\')' + condition + ' %}' + $(this).find('.htmlContent').val() + '{% end %}'
     console.log(snippet);
 
-    $('#snippet').append(snippet);
+    $('#snippet').html($('#snippet').val() + snippet);
   });
 
   $('#snippetModal').modal('show');
