@@ -4,9 +4,23 @@ $icon-font-path: '../fonts/';
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+body {
+  padding-bottom: 80px;
+}
+
+// Query bar
 .statement {
   background: lightgray;
+  padding: 5px 10px;
+}
+
+// Content textarea
+.htmlContent {
+  width: 100%;
+  height:200px;
   padding: 10px;
+  border: 1px solid lightgray;
+  display: block;
 }
 
 // Hide text inputs until selects are set
@@ -17,14 +31,6 @@ $icon-font-path: '../fonts/';
   }
 }
 
-// Style large Textarea
-.htmlContent {
-  width: 100%;
-  height:200px;
-  padding: 10px;
-  border: 1px solid lightgray;
-}
-
 // Sticky Footer Style
 .footer {
   z-index: 500;
@@ -33,5 +39,37 @@ $icon-font-path: '../fonts/';
   width: 100%;
   text-align: right;
   padding: 10px;
-  background: lightgray;
+  border-top: 1px solid lightgray;
+  background: rgba(255,255,255,.8);
+}
+
+
+// Form Styles
+.form-control {
+  font-size: 12px;
+  height: 28px;
+}
+
+.modal {
+  .modal-footer {
+    border: none;
+    padding: 5px 15px;
+  }
+
+  textarea {
+    width: 100%;
+    border: none;
+    height: 80px;
+    padding: 30px 20px;
+    background: #EAEAEA;
+    border-bottom: 1px solid #CCCCCC;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    display: block;
+  }
+}
+
+.btn-bottom {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
