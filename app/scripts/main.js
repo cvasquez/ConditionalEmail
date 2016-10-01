@@ -6,6 +6,7 @@ var snippet,
     custom_val = $('.custom_field input'),
     cond_val = $('.condition'),
     eq_val = $('.condition_value input'),
+    currentSnippet,
     i;
 
 
@@ -34,8 +35,9 @@ function newStatement(type) {
   var element = $('div[class^="block"]:first'),
       element_count = $('div[class^="block"]').length;
   if(type==0){
-    element.clone(true).attr('class', 'block'+ (element_count+1)).appendTo('.statementStream');
-    $('.block' + (element_count+1)).find('.statement').html('else');
+    element.clone(true).attr('class', 'block'+ (element_count+1) + ' else').appendTo('.statementStream');
+    $('.block' + (element_count+1)).find('.statement form').html('else');
+    $('.block' + (element_count+1)).find('.statement .delete-block').css('display', 'block');
   } else if(type==1) {
     element.clone(true).attr('class', 'block'+ (element_count+1)).appendTo('.statementStream');
     $('.block' + (element_count+1)).find('.statement .delete-block').css('display', 'block');
@@ -80,10 +82,17 @@ function buildSnippet(){
     }
 
     // Build snippet
-    snippet = '{% if globals().get(\'' + variable + '\')' + condition + ' %}' + $(this).find('.htmlContent').val() + '{% end %}'
-    console.log(snippet);
-
-    $('#snippet').html($('#snippet').val() + snippet);
+    currentSnippet = $('#snippet').val();
+    // Set snippet based on whether it is a new statement or an else
+    if($(this).hasClass('else')) {
+      // Remove last instance of {% end %}
+      currentSnippet = currentSnippet.replace(/{% end %}(?!.*{% end %})/, '');
+      snippet = '{% else %}' + $(this).find('.htmlContent').val() + '{% end %}'
+      $('#snippet').html(currentSnippet + snippet);
+    } else {
+      snippet = '{% if globals().get(\'' + variable + '\')' + condition + ' %}' + $(this).find('.htmlContent').val() + '{% end %}'
+      $('#snippet').html(currentSnippet + snippet);
+    }
   });
 
   $('#snippetModal').modal('show');
