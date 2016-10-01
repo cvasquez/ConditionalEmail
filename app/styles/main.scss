@@ -68,6 +68,7 @@ body {
 .form-control {
   font-size: 12px;
   height: 28px;
+  margin-left: 5px;
 }
 
 .modal {
@@ -86,6 +87,16 @@ body {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     display: block;
+
+    &:focus {
+      outline: none;
+      background: #DAE8EF;
+    }
+
+    &::selection {
+      color: white;
+      background: $teal;
+    }
   }
 }
 
